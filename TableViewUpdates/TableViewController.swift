@@ -12,6 +12,9 @@ class TableViewController: UITableViewController {
     
     private let identifier = "Cell"
     private let uiLabelText = ["にんじん","たまねぎ","じゃがいも"]
+    let animation = UITableViewRowAnimation.Fade
+    
+    //NSUserDefaults should retain these data
     private var useVegetables = [true, true, true]
 
     override func viewDidLoad() {
@@ -53,28 +56,28 @@ class TableViewController: UITableViewController {
         println("\(sender.tag) \(!sender.on)->\(sender.on)")
         
         useVegetables[sender.tag] = sender.on
+        
+        func operateTableView(forRow: Int) {
+            let indexPaths = [NSIndexPath(forRow: forRow, inSection: 0)]
+            
+            if sender.on {
+                tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
+            } else {
+                tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
+            }
+        }
+        
         switch sender.tag {
         case 0: //carrot
             tableView.beginUpdates()
-            if sender.on {
-                tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: .Fade)
-                if useVegetables[1] {
-                    tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 2, inSection: 0)], withRowAnimation: .Fade)
-                }
-            } else {
-                tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: .Fade)
-                if useVegetables[1] {
-                    tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 2, inSection: 0)], withRowAnimation: .Fade)
-                }
+            operateTableView(1)
+            if useVegetables[1] {
+                operateTableView(2)
             }
             tableView.endUpdates()
         case 1: //onion
             tableView.beginUpdates()
-            if sender.on {
-                tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 2, inSection: 0)], withRowAnimation: .Fade)
-            } else {
-                tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 2, inSection: 0)], withRowAnimation: .Fade)
-            }
+            operateTableView(2)
             tableView.endUpdates()
         default:
             break
