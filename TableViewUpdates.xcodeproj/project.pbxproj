@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B54B37231B058AE800C531A2 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54B37221B058AE800C531A2 /* TableViewController.swift */; };
+		B54B37261B05964200C531A2 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54B37241B05964200C531A2 /* TableViewCell.swift */; };
+		B54B37271B05964200C531A2 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B54B37251B05964200C531A2 /* TableViewCell.xib */; };
 		B55F39601B05860300CEE93F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55F395F1B05860300CEE93F /* AppDelegate.swift */; };
 		B55F39651B05860300CEE93F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B55F39631B05860300CEE93F /* Main.storyboard */; };
 		B55F39671B05860300CEE93F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B55F39661B05860300CEE93F /* Images.xcassets */; };
@@ -27,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		B54B37221B058AE800C531A2 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		B54B37241B05964200C531A2 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		B54B37251B05964200C531A2 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		B55F395A1B05860300CEE93F /* TableViewUpdates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewUpdates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55F395E1B05860300CEE93F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B55F395F1B05860300CEE93F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 				B55F39681B05860300CEE93F /* LaunchScreen.xib */,
 				B55F395D1B05860300CEE93F /* Supporting Files */,
 				B54B37221B058AE800C531A2 /* TableViewController.swift */,
+				B54B37241B05964200C531A2 /* TableViewCell.swift */,
+				B54B37251B05964200C531A2 /* TableViewCell.xib */,
 			);
 			path = TableViewUpdates;
 			sourceTree = "<group>";
@@ -193,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B55F39651B05860300CEE93F /* Main.storyboard in Resources */,
+				B54B37271B05964200C531A2 /* TableViewCell.xib in Resources */,
 				B55F396A1B05860300CEE93F /* LaunchScreen.xib in Resources */,
 				B55F39671B05860300CEE93F /* Images.xcassets in Resources */,
 			);
@@ -212,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B54B37261B05964200C531A2 /* TableViewCell.swift in Sources */,
 				B54B37231B058AE800C531A2 /* TableViewController.swift in Sources */,
 				B55F39601B05860300CEE93F /* AppDelegate.swift in Sources */,
 			);
