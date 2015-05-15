@@ -11,8 +11,9 @@ import UIKit
 class TableViewController: UITableViewController {
     
     private let identifier = "Cell"
-    private var uiLabelText = ["にんじん","たまねぎ","じゃがいも"]
-    private var potatoHidden = false
+    private let uiLabelText = ["にんじん","たまねぎ","じゃがいも"]
+    private var useOnion = true
+    private var usePotato = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,16 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return uiLabelText.count
+        if !useOnion {
+            //only carrot
+            return 1
+        } else if !usePotato {
+            //carrot and onion
+            return 2
+        } else {
+            //carrot, onion and potato
+            return 3
+        }
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -42,16 +52,21 @@ class TableViewController: UITableViewController {
     func changeUISwitchValue(sender: UISwitch) {
         println("\(sender.tag) \(!sender.on)->\(sender.on)")
         
-        if sender.tag == 1 && !potatoHidden {
-            //uncomment when insert/delete plural cells
-            //tableView.beginUpdates()
-            
-            uiLabelText.removeAtIndex(2)
-            let deleteIndexPaths = [NSIndexPath(forRow: 2, inSection: 0)]
-            tableView.deleteRowsAtIndexPaths(deleteIndexPaths, withRowAnimation: .Fade)
-
-            //tableView.endUpdates()
-            potatoHidden = true
+        switch sender.tag {
+        case 0: //carrot
+            break
+        case 1: //onion
+            tableView.beginUpdates()
+            if sender.on {
+                usePotato = true
+                tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 2, inSection: 0)], withRowAnimation: .Fade)
+            } else {
+                usePotato = false
+                tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 2, inSection: 0)], withRowAnimation: .Fade)
+            }
+            tableView.endUpdates()
+        default:
+            break
         }
     }
 
