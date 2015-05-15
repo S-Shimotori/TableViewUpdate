@@ -11,7 +11,8 @@ import UIKit
 class TableViewController: UITableViewController {
     
     private let identifier = "Cell"
-    private let uiLabelText = ["にんじん","たまねぎ","じゃがいも"]
+    private var uiLabelText = ["にんじん","たまねぎ","じゃがいも"]
+    private var potatoHidden = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return uiLabelText.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -40,6 +41,18 @@ class TableViewController: UITableViewController {
     
     func changeUISwitchValue(sender: UISwitch) {
         println("\(sender.tag) \(!sender.on)->\(sender.on)")
+        
+        if sender.tag == 1 && !potatoHidden {
+            //uncomment when insert/delete plural cells
+            //tableView.beginUpdates()
+            
+            uiLabelText.removeAtIndex(2)
+            let deleteIndexPaths = [NSIndexPath(forRow: 2, inSection: 0)]
+            tableView.deleteRowsAtIndexPaths(deleteIndexPaths, withRowAnimation: .Fade)
+
+            //tableView.endUpdates()
+            potatoHidden = true
+        }
     }
 
 }
