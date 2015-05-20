@@ -53,34 +53,37 @@ class TableViewController: UITableViewController {
     }
     
     func changeUISwitchValue(sender: UISwitch) {
-        println("\(sender.tag) \(!sender.on)->\(sender.on)")
+        println("\(sender.tag)")
         
-        useVegetables[sender.tag] = sender.on
+        if useVegetables[sender.tag] != sender.on {
+            println("\(!sender.on)->\(sender.on)")
+            useVegetables[sender.tag] = sender.on
         
-        func operateTableView(forRow: Int) {
-            let indexPaths = [NSIndexPath(forRow: forRow, inSection: 0)]
+            func operateTableView(forRow: Int) {
+                let indexPaths = [NSIndexPath(forRow: forRow, inSection: 0)]
             
-            if sender.on {
-                tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
-            } else {
-                tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
+                if sender.on {
+                    tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
+                } else {
+                    tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
+                }
             }
-        }
         
-        switch sender.tag {
-        case 0: //carrot
-            tableView.beginUpdates()
-            operateTableView(1)
-            if useVegetables[1] {
+            switch sender.tag {
+            case 0: //carrot
+                tableView.beginUpdates()
+                operateTableView(1)
+                if useVegetables[1] {
+                    operateTableView(2)
+                }
+                tableView.endUpdates()
+            case 1: //onion
+                tableView.beginUpdates()
                 operateTableView(2)
+                tableView.endUpdates()
+            default:
+                break
             }
-            tableView.endUpdates()
-        case 1: //onion
-            tableView.beginUpdates()
-            operateTableView(2)
-            tableView.endUpdates()
-        default:
-            break
         }
     }
 
